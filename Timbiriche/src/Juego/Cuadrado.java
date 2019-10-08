@@ -19,12 +19,12 @@ private Color color;
     
     @Override
     public void setColor(Color color) {
-        
+        this.color = color;
     }
 
     @Override
     public void Dibujar(Shape figura) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
     
     

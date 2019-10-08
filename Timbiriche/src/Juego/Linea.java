@@ -25,7 +25,7 @@ public class Linea extends Figura {
 
     @Override
     public void setColor(Color color) {
-        
+        this.color = color;
     }
     
     
