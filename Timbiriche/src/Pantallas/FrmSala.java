@@ -5,18 +5,23 @@
  */
 package Pantallas;
 
+import Juego.ControlJugadores;
+import Juego.Jugador;
+
 /**
  *
  * @author User 1
  */
 public class FrmSala extends javax.swing.JFrame {
     String nombre;
+    ControlJugadores jugadores;
     /**
      * Creates new form FrmLobby
      */
     public FrmSala(String nombre) {
         initComponents();
         this.nombre = nombre;
+        jugadores = new ControlJugadores();
     }
 
     /**
@@ -403,6 +408,11 @@ public class FrmSala extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
+        jugadores.agregarJugador(new Jugador("Daniel","123"));
+        jugadores.agregarJugador(new Jugador("Leo","123"));
+        jugadores.agregarJugador(new Jugador("Morquecho","123"));
+        jugadores.agregarJugador(new Jugador("Eydrel","123"));
+        
         Timbiriche timbiriche = new Timbiriche();
         this.setVisible(false);
         timbiriche.setVisible(true);
