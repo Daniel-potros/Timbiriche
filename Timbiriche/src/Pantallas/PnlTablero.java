@@ -24,7 +24,13 @@ public class PnlTablero extends javax.swing.JPanel {
         initComponents();
     }
 
-      @Override
+    
+    
+    /**
+     * Método para pintar cuadros y líneas en el tablero
+     * @param grphcs 
+     */
+    @Override
     protected void paintComponent(Graphics grphcs) {
         super.paintComponent(grphcs);
 

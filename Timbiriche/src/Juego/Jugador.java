@@ -20,6 +20,12 @@ public class Jugador {
     private String Avatar;
     private Color color;
     private ArrayList<Figura> figuras;
+    private String contraseña;
+    
+   public Jugador(String nombre, String contraseña) {
+       Nombre=nombre;
+       this.contraseña = contraseña;
+   }
 
     public String getNombre() {
         return Nombre;
@@ -78,6 +84,14 @@ public class Jugador {
             return false;
         }
         return true;
+    }
+
+    public String getContraseña() {
+        return contraseña;
+    }
+
+    public void setContraseña(String contraseña) {
+        this.contraseña = contraseña;
     }
 
     
