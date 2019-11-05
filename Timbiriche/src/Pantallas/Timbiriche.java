@@ -6,30 +6,70 @@
 package Pantallas;
 
 import Juego.ControlJugadores;
+import Juego.Tablero;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 
 /**
  *
- * @author hp1
+ * @author Daniel Rojas
  */
 public class Timbiriche extends javax.swing.JFrame {
 
-    PnlTablero tablero;
+    PnlTablero pnltablero;
     ControlJugadores jugadores;
+    private JButton botonesHorizontales[][];
+    private JButton botonesVerticales[][];
+    Tablero tablero;
     /**
      * Creates new form Timbiriche
      */
-    public Timbiriche() {
+    public Timbiriche(ControlJugadores jugadores) {
         initComponents();
-        tablero = new PnlTablero();
-        tablero.setLocation(250, 100);
-        tablero.setVisible(true);
-        jugadores = new ControlJugadores();
+        this.jugadores = jugadores;
+        pnltablero = new PnlTablero(jugadores);
+        pnltablero.setLocation(250, 100);
+        pnltablero.setVisible(true);
+        tablero = new Tablero();
+        this.jugadores = jugadores;
         
         labelJ1.setText(jugadores.obtenerNombre(0));
         labelJ2.setText(jugadores.obtenerNombre(1));
         labelJ3.setText(jugadores.obtenerNombre(2));
         labelJ4.setText(jugadores.obtenerNombre(3));
         
+        icono1.setIcon(jugadores.obtenerAvatar(0));
+        icono2.setIcon(jugadores.obtenerAvatar(1));
+        icono3.setIcon(jugadores.obtenerAvatar(2));
+        icono4.setIcon(jugadores.obtenerAvatar(3));
+        
+        if (jugadores.cantidadJugadores() == 2) {
+            tablero.crearTablero(10);
+            labelTablero.setIcon(new ImageIcon("src/Imagenes/tablero10x10.png"));
+            
+        } else if (jugadores.cantidadJugadores() == 3) {
+            tablero.crearTablero(20);
+            labelTablero.setIcon(new ImageIcon("src/Imagenes/tablero20x20.png"));
+        } else {
+            tablero.crearTablero(40);
+            labelTablero.setSize(646, 646);
+            labelTablero.setIcon(new ImageIcon("src/Imagenes/tablero40x40.png"));
+        }
+        
+        botonesHorizontales = tablero.getBotonesHorizontales();
+        botonesVerticales = tablero.getBotonesVerticales();
+        
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                labelTablero.add(botonesHorizontales[i][j]);
+                labelTablero.add(botonesVerticales[i][j]);
+            }
+        }
+        
+    }
+    
+    public Timbiriche() {
+        initComponents();
     }
 
     /**
@@ -41,14 +81,10 @@ public class Timbiriche extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        icono1 = new javax.swing.JPanel();
         labelJ1 = new javax.swing.JLabel();
         labelJ2 = new javax.swing.JLabel();
-        icono2 = new javax.swing.JPanel();
-        icono3 = new javax.swing.JPanel();
         labelJ3 = new javax.swing.JLabel();
         labelJ4 = new javax.swing.JLabel();
-        icono4 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         labelPuntos1 = new javax.swing.JLabel();
         labelPuntos2 = new javax.swing.JLabel();
@@ -58,72 +94,21 @@ public class Timbiriche extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        icono1 = new javax.swing.JLabel();
+        icono2 = new javax.swing.JLabel();
+        icono3 = new javax.swing.JLabel();
+        icono4 = new javax.swing.JLabel();
+        labelTablero = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        icono1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        icono1.setPreferredSize(new java.awt.Dimension(46, 46));
-
-        javax.swing.GroupLayout icono1Layout = new javax.swing.GroupLayout(icono1);
-        icono1.setLayout(icono1Layout);
-        icono1Layout.setHorizontalGroup(
-            icono1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 44, Short.MAX_VALUE)
-        );
-        icono1Layout.setVerticalGroup(
-            icono1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 44, Short.MAX_VALUE)
-        );
 
         labelJ1.setText("Jugador 1");
 
         labelJ2.setText("Jugador 2");
 
-        icono2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        icono2.setPreferredSize(new java.awt.Dimension(46, 46));
-
-        javax.swing.GroupLayout icono2Layout = new javax.swing.GroupLayout(icono2);
-        icono2.setLayout(icono2Layout);
-        icono2Layout.setHorizontalGroup(
-            icono2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 44, Short.MAX_VALUE)
-        );
-        icono2Layout.setVerticalGroup(
-            icono2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 44, Short.MAX_VALUE)
-        );
-
-        icono3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        icono3.setPreferredSize(new java.awt.Dimension(46, 46));
-
-        javax.swing.GroupLayout icono3Layout = new javax.swing.GroupLayout(icono3);
-        icono3.setLayout(icono3Layout);
-        icono3Layout.setHorizontalGroup(
-            icono3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 44, Short.MAX_VALUE)
-        );
-        icono3Layout.setVerticalGroup(
-            icono3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 44, Short.MAX_VALUE)
-        );
-
         labelJ3.setText("Jugador 3");
 
         labelJ4.setText("Jugador 4");
-
-        icono4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        icono4.setPreferredSize(new java.awt.Dimension(46, 46));
-
-        javax.swing.GroupLayout icono4Layout = new javax.swing.GroupLayout(icono4);
-        icono4.setLayout(icono4Layout);
-        icono4Layout.setHorizontalGroup(
-            icono4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 44, Short.MAX_VALUE)
-        );
-        icono4Layout.setVerticalGroup(
-            icono4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 44, Short.MAX_VALUE)
-        );
 
         jButton1.setText("Abandonar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -148,99 +133,122 @@ public class Timbiriche extends javax.swing.JFrame {
 
         jLabel7.setText("Puntos");
 
+        icono1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        icono2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        icono3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        icono4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        labelTablero.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(107, 107, 107)
+                .addComponent(jButton1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(icono1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(labelJ1))
+                        .addGap(4, 4, 4)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(icono3, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(labelJ3))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(icono1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(labelJ1))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(icono4, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(labelJ4))))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(icono2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(labelJ2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(icono3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(labelJ3))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(icono4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(labelJ4)))
-                .addGap(37, 37, 37)
+                        .addComponent(icono2, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(labelJ2)))
+                .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(labelPuntos1)
                     .addComponent(labelPuntos2)
                     .addComponent(labelPuntos3)
                     .addComponent(labelPuntos4)
                     .addComponent(jLabel1)
                     .addComponent(jLabel5)
                     .addComponent(jLabel6)
-                    .addComponent(jLabel7))
-                .addGap(0, 739, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(109, 109, 109)
-                    .addComponent(jButton1)
-                    .addContainerGap(719, Short.MAX_VALUE)))
+                    .addComponent(jLabel7)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(labelPuntos1)
+                        .addGap(9, 9, 9)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(labelTablero, javax.swing.GroupLayout.PREFERRED_SIZE, 648, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(labelJ1)
-                            .addGap(19, 19, 19))
-                        .addComponent(icono1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(13, 13, 13)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(labelPuntos1)))
-                .addGap(57, 57, 57)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(icono2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(24, 24, 24)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(labelJ1)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel1)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(labelPuntos1))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(icono1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(89, 89, 89)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel5)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(labelPuntos2))
+                                    .addComponent(icono2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(labelJ2)
+                                .addGap(12, 12, 12)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(labelPuntos3)
+                                .addGap(121, 121, 121))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(77, 77, 77)
+                                        .addComponent(labelJ3))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
+                                        .addComponent(icono3, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(79, 79, 79)
+                                        .addComponent(icono4, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(92, 92, 92)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(labelJ4)
+                                            .addComponent(jLabel7))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(labelPuntos4))))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(13, 13, 13)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(labelJ2)
-                            .addComponent(jLabel5))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(labelPuntos2)))
-                .addGap(64, 64, 64)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(labelJ3)
-                            .addGap(19, 19, 19))
-                        .addComponent(icono3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(13, 13, 13)
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(labelPuntos3)))
-                .addGap(57, 57, 57)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(icono4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(98, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(labelJ4)
-                            .addComponent(jLabel7))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(labelPuntos4)
-                        .addGap(97, 97, 97))))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addContainerGap(440, Short.MAX_VALUE)
-                    .addComponent(jButton1)
-                    .addContainerGap()))
+                        .addGap(35, 35, 35)
+                        .addComponent(labelTablero, javax.swing.GroupLayout.PREFERRED_SIZE, 438, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(47, 47, 47))
         );
 
         pack();
@@ -286,10 +294,10 @@ public class Timbiriche extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel icono1;
-    private javax.swing.JPanel icono2;
-    private javax.swing.JPanel icono3;
-    private javax.swing.JPanel icono4;
+    private javax.swing.JLabel icono1;
+    private javax.swing.JLabel icono2;
+    private javax.swing.JLabel icono3;
+    private javax.swing.JLabel icono4;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel5;
@@ -303,5 +311,6 @@ public class Timbiriche extends javax.swing.JFrame {
     private javax.swing.JLabel labelPuntos2;
     private javax.swing.JLabel labelPuntos3;
     private javax.swing.JLabel labelPuntos4;
+    private javax.swing.JLabel labelTablero;
     // End of variables declaration//GEN-END:variables
 }

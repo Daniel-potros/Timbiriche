@@ -5,6 +5,8 @@
  */
 package Pantallas;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author User 1
@@ -75,9 +77,14 @@ public class FrmMenu extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        FrmLobby lobby = new FrmLobby();
+//        FrmSala sala = new FrmSala(nombreSala);
+//        this.setVisible(false);
+//        sala.setVisible(true);
+        
+        String nombreSala = JOptionPane.showInputDialog("Nombre de la sala");
+        FrmSala sala = new FrmSala(nombreSala);
         this.setVisible(false);
-        lobby.setVisible(true);
+        sala.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

@@ -5,23 +5,50 @@
  */
 package Pantallas;
 
+import Juego.ControlFiguras;
+import Juego.ControlJugadores;
+import Juego.Tablero;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.Shape;
+import javax.swing.JButton;
 
 /**
  *
- * @author User 1
+ * @author Daniel Rojas
  */
 public class PnlTablero extends javax.swing.JPanel {
-    
-    
+
+    Image fondo;
+    ControlJugadores jugadores;
+    private JButton botonesHorizontales[][];
+    private JButton botonesVerticales[][];
+    Tablero tablero;
+
     /**
      * Creates new form Tablero
      */
-    public PnlTablero() {
+    public PnlTablero(ControlJugadores jugadores) {
         initComponents();
+        
+        this.jugadores = jugadores;
+        tablero = new Tablero();
+        ControlFiguras cfiguras = new ControlFiguras();
+   
+        if (jugadores.cantidadJugadores() == 2) {
+            tablero.crearTablero(10);
+        } else if (jugadores.cantidadJugadores() == 3) {
+            tablero.crearTablero(20);
+        } else {
+            tablero.crearTablero(40);
+        }
+        
+        botonesHorizontales = tablero.getBotonesHorizontales();
+        botonesVerticales = tablero.getBotonesVerticales();
+        
+        
     }
 
     
@@ -33,11 +60,12 @@ public class PnlTablero extends javax.swing.JPanel {
     @Override
     protected void paintComponent(Graphics grphcs) {
         super.paintComponent(grphcs);
-
-        Graphics2D g2 = (Graphics2D) grphcs.create();
-        for (Shape figura : figuras) {
-            g2.draw(figura);
-        }
+        
+        
+//        Graphics2D g2 = (Graphics2D) grphcs.create();
+//        for (Shape figura : figuras) {
+//            g2.draw(figura);
+//        }
 
     }
     /**
@@ -49,21 +77,32 @@ public class PnlTablero extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jLabel1.setText("jLabel1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 656, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(204, 204, 204)
+                .addComponent(jLabel1)
+                .addContainerGap(418, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 396, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(119, 119, 119)
+                .addComponent(jLabel1)
+                .addContainerGap(263, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
