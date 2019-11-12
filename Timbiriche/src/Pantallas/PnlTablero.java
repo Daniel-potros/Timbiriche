@@ -6,8 +6,8 @@
 package Pantallas;
 
 import Juego.ControlFiguras;
-import Juego.ControlJugadores;
-import Juego.Tablero;
+import ObjetosTimbiriche.ControlJugadores;
+import ObjetosTimbiriche.Tablero;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;

@@ -5,8 +5,8 @@
  */
 package Pantallas;
 
-import Juego.ControlJugadores;
-import Juego.Jugador;
+import ObjetosTimbiriche.ControlJugadores;
+import ObjetosTimbiriche.Jugador;
 
 /**
  *

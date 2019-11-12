@@ -5,6 +5,7 @@
  */
 package Juego;
 
+import ObjetosTimbiriche.Figura;
 import java.util.ArrayList;
 
 /**
