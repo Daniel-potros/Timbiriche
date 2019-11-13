@@ -17,7 +17,7 @@ import javax.swing.ImageIcon;
  */
 public class Jugador {
     private String Nombre;
-    private String Avatar;
+    private ImageIcon Avatar;
     private Color color;
     private ArrayList<Figura> figuras;
     private String contraseña;
@@ -35,11 +35,11 @@ public class Jugador {
         this.Nombre = Nombre;
     }
 
-    public String getAvatar() {
+    public ImageIcon getAvatar() {
         return Avatar;
     }
 
-    public void setAvatar(String Avatar) {
+    public void setAvatar(ImageIcon Avatar) {
         this.Avatar = Avatar;
     }
 

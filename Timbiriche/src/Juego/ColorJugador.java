@@ -5,10 +5,15 @@
  */
 package Juego;
 
+import ObjetosTimbiriche.Jugador;
+
 /**
  *
  * @author Daniel Rojas
  */
 public class ColorJugador {
     Jugador[] jugadores;
+    
+    
+    
 }
