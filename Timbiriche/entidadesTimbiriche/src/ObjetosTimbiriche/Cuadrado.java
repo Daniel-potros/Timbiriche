@@ -5,26 +5,33 @@
  */
 package ObjetosTimbiriche;
 
-import java.awt.Shape;
 import java.awt.Color;
-import java.awt.Graphics2D;
+import java.util.ArrayList;
 
 /**
  *
- * @author User 1
+ * @author Daniel Rojas
  */
 public class Cuadrado extends Figura{
-private Color color;
+    private ArrayList<Figura> lineas = new ArrayList<Figura>();
     
     
-    @Override
-    public void setColor(Color color) {
-        this.color = color;
+    public Cuadrado(Color color, int x, int y) {
+        super(color,x,y);
     }
 
     @Override
-    public void Dibujar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void agregarLinea(Figura figura) {
+        if (!lineas.contains(figura) && lineas.size()<4) {
+            lineas.add(figura);
+        }
+    }
+
+    @Override
+    public void eliminarLinea(Figura figura) {
+        if (lineas.contains(figura)) {
+            lineas.remove(figura);
+        }
     }
 
 

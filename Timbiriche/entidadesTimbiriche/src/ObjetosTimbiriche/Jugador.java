@@ -58,7 +58,23 @@ public class Jugador {
     public void setFiguras(ArrayList<Figura> figuras) {
         this.figuras = figuras;
     }
+    
+    public void agregarFigura(Figura figura) {
+        figuras.add(figura);
+    }
+    
+    public void eliminarFigura(Figura figura) {
+        figuras.remove(figura);
+    }
 
+    public String getContraseña() {
+        return contraseña;
+    }
+
+    public void setContraseña(String contraseña) {
+        this.contraseña = contraseña;
+    }
+    
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -74,25 +90,13 @@ public class Jugador {
         if (!Objects.equals(this.Nombre, other.Nombre)) {
             return false;
         }
-        if (!Objects.equals(this.Avatar, other.Avatar)) {
-            return false;
-        }
-        if (!Objects.equals(this.color, other.color)) {
-            return false;
-        }
-        if (!Objects.equals(this.figuras, other.figuras)) {
+        if (!Objects.equals(this.contraseña, other.contraseña)) {
             return false;
         }
         return true;
     }
 
-    public String getContraseña() {
-        return contraseña;
-    }
-
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
-    }
+    
 
     
     

@@ -5,10 +5,16 @@
  */
 package Pantallas;
 
-import Juego.ColorJugador;
-import ObjetosTimbiriche.ControlJugadores;
-import ObjetosTimbiriche.Tablero;
-import javax.swing.ImageIcon;
+
+import Juego.ControlTablero;
+import Juego.botonLinea;
+import ObjetosTimbiriche.Jugador;
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 
 /**
@@ -18,66 +24,195 @@ import javax.swing.JButton;
 public class Timbiriche extends javax.swing.JFrame {
 
 //    PnlTablero pnltablero;
-    ControlJugadores jugadores;
+    ArrayList<Jugador> jugadores;
     private JButton botonesHorizontales[][];
     private JButton botonesVerticales[][];
-    private Tablero tablero;
-    private ColorJugador colores;
+    private ControlTablero tablero;
+    int tamaño,turno = 1;
+
     /**
      * Creates new form Timbiriche
      */
-    public Timbiriche(ControlJugadores jugadores) {
+    public Timbiriche(ArrayList<Jugador> jugadores) {
         initComponents();
         this.jugadores = jugadores;
-        colores = new ColorJugador();
-//        pnltablero = new PnlTablero(jugadores);
-//        pnltablero.setLocation(250, 100);
-//        pnltablero.setVisible(true);
         
-        this.jugadores = jugadores;
-        
-        labelJ1.setText(jugadores.obtenerNombre(0));
-        labelJ2.setText(jugadores.obtenerNombre(1));
-        labelJ3.setText(jugadores.obtenerNombre(2));
-        labelJ4.setText(jugadores.obtenerNombre(3));
-        
-        icono1.setIcon(jugadores.obtenerAvatar(0));
-        icono2.setIcon(jugadores.obtenerAvatar(1));
-        icono3.setIcon(jugadores.obtenerAvatar(2));
-        icono4.setIcon(jugadores.obtenerAvatar(3));
-        
-        if (jugadores.cantidadJugadores() == 2) {
-            tablero = new Tablero(10,jugadores);
-            tablero.crearTablero();
-            
-        } else if (jugadores.cantidadJugadores() == 3) {
-            tablero = new Tablero(20,jugadores);
-            tablero.crearTablero();
-        } else {
-            tablero = new Tablero(40,jugadores);
-            tablero.crearTablero();
+           switch (jugadores.size()) {
+            case 2:
+                labelJ1.setText(jugadores.get(0).getNombre());
+                labelJ2.setText(jugadores.get(1).getNombre());
+                icono1.setIcon(jugadores.get(0).getAvatar());
+                icono2.setIcon(jugadores.get(1).getAvatar());
+                tamaño = 10;
+                tablero = new ControlTablero(2);
+                try {
+                    tablero.agregarJugador(jugadores.get(0));
+                    tablero.agregarJugador(jugadores.get(1));
+                } catch (Exception ex) {
+                       Logger.getLogger(Timbiriche.class.getName()).log(Level.SEVERE, null, ex);
+                   }
+                   break;
+
+               case 3:
+                   labelJ1.setText(jugadores.get(0).getNombre());
+                   labelJ2.setText(jugadores.get(1).getNombre());
+                   labelJ3.setText(jugadores.get(2).getNombre());
+                   icono1.setIcon(jugadores.get(0).getAvatar());
+                   icono2.setIcon(jugadores.get(1).getAvatar());
+                   icono3.setIcon(jugadores.get(2).getAvatar());
+                   tamaño = 20;
+                   tablero = new ControlTablero(3);
+
+                try {
+                    tablero.agregarJugador(jugadores.get(0));
+                    tablero.agregarJugador(jugadores.get(1));
+                    tablero.agregarJugador(jugadores.get(2));
+                } catch (Exception ex) {
+                    Logger.getLogger(Timbiriche.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                   break;
+
+               case 4:
+                   labelJ1.setText(jugadores.get(0).getNombre());
+                   labelJ2.setText(jugadores.get(1).getNombre());
+                   labelJ3.setText(jugadores.get(2).getNombre());
+                   labelJ4.setText(jugadores.get(3).getNombre());
+                   icono1.setIcon(jugadores.get(0).getAvatar());
+                   icono2.setIcon(jugadores.get(1).getAvatar());
+                   icono3.setIcon(jugadores.get(2).getAvatar());
+                   icono4.setIcon(jugadores.get(3).getAvatar());
+                   tamaño = 40;
+                   tablero = new ControlTablero(4);
+
+                   try {
+                       tablero.agregarJugador(jugadores.get(0));
+                       tablero.agregarJugador(jugadores.get(1));
+                       tablero.agregarJugador(jugadores.get(2));
+                       tablero.agregarJugador(jugadores.get(3));
+                   } catch (Exception ex) {
+                       Logger.getLogger(Timbiriche.class.getName()).log(Level.SEVERE, null, ex);
+                   }
+                   break;
+
         }
-        
-        botonesHorizontales = tablero.getBotonesHorizontales();
-        botonesVerticales = tablero.getBotonesVerticales();
-        
-        for (int i = 0; i < tablero.getTamaño(); i++) {
-            for (int j = 0; j < tablero.getTamaño()+1; j++) {
-                this.add(botonesHorizontales[i][j]);
-            }
-        }
-        
-        for (int i = 0; i < tablero.getTamaño()+1; i++) {
-            for (int j = 0; j < tablero.getTamaño(); j++) {
-                this.add(botonesVerticales[i][j]);
-            }
-        }
+        crearTablero();
+//        
+//        botonesHorizontales = tablero.getBotonesHorizontales();
+//        botonesVerticales = tablero.getBotonesVerticales();
+//        
+//        for (int i = 0; i < tablero.getTamaño(); i++) {
+//            for (int j = 0; j < tablero.getTamaño()+1; j++) {
+//                this.add(botonesHorizontales[i][j]);
+//                
+//            }
+//        }
+//        
+//        for (int i = 0; i < tablero.getTamaño()+1; i++) {
+//            for (int j = 0; j < tablero.getTamaño(); j++) {
+//                this.add(botonesVerticales[i][j]);
+//            }
+//        }
         
     }
     
     public Timbiriche() {
         initComponents();
     }
+    
+    public void crearTablero() {
+        botonesHorizontales = new JButton[tamaño][tamaño + 1];
+        botonesVerticales = new JButton[tamaño + 1][tamaño];
+
+        for (int y = 0; y < tamaño; y++) {
+            for (int x = 0; x < tamaño + 1; x++) {
+                JButton boton = new JButton();
+                boton.setVisible(true);
+                boton.setBackground(Color.gray);
+                boton.addActionListener(new ButtonListener());
+
+//                 Botones horizontales
+                if (tamaño == 10) {
+                    boton.setSize(65, 26);
+                    boton.setLocation((95 * y) + 26, (94 * x) );
+                } else if (tamaño == 20) {
+                    boton.setSize(30, 10);
+                    boton.setLocation((47 * y) + 14 + (y / 2), (47 * x) + (x / 2));
+                } else if (tamaño == 40) {
+                    boton.setSize(20, 12);
+                    boton.setLocation((24 * y) + 9, (24 * x));
+                }
+
+//                boton.setX(x);
+//                boton.setY(y);
+                botonesHorizontales[y][x] = boton;
+                this.add(boton);
+            }
+        }
+        
+        for (int i = 0; i < tamaño+1; i++) {
+            for (int j = 0; j < tamaño; j++) {
+                JButton boton2 = new JButton();
+                boton2.setVisible(true);
+                boton2.setBackground(Color.GRAY);
+                boton2.addActionListener(new ButtonListener());
+
+//                botones verticales
+                if (tamaño == 10) {
+                    boton2.setSize(26, 65);
+                    boton2.setLocation((95 * i), (94 * j) + 26);
+
+                } else if (tamaño == 20) {
+                    boton2.setSize(10, 30);
+                    boton2.setLocation((47 * i) + (i / 2), (47 * j) + 14 + (j / 2));
+                } else if (tamaño == 40) {
+                    boton2.setSize(12, 20);
+                    boton2.setLocation((24 * i), (24 * j) + 9);
+                }
+                
+//                boton2.setX(j);
+//                boton2.setY(i);
+                botonesVerticales[i][j] = boton2;
+                this.add(boton2);
+            }
+        }
+
+    }
+    
+    public class ButtonListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent evento) {
+            JButton botonActivado = (JButton) evento.getSource();
+            botonActivado.setEnabled(true);
+//            botonActivado.setBackground(Color.RED);
+
+            switch (turno) {
+                case 1:
+                    botonActivado.setBackground(jugadores.get(0).getColor());
+                    
+              
+                    
+                    turno = 2;
+                    break;
+                case 2:
+                    tablero.agregarPuntaje(jugadores.get(1));
+                    botonActivado.setBackground(jugadores.get(1).getColor());
+                    turno = 3;
+                    break;
+                case 3:
+                    tablero.agregarPuntaje(jugadores.get(2));
+                    botonActivado.setBackground(jugadores.get(2).getColor());
+                    turno = 4;
+                    break;
+                case 4:
+                    tablero.agregarPuntaje(jugadores.get(3));
+                    botonActivado.setBackground(jugadores.get(3).getColor());
+                    turno = 1;
+                    break;
+            }
+
+        }
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -172,8 +307,8 @@ public class Timbiriche extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(labelTablero, javax.swing.GroupLayout.DEFAULT_SIZE, 980, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addComponent(labelTablero, javax.swing.GroupLayout.DEFAULT_SIZE, 992, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -218,13 +353,14 @@ public class Timbiriche extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(icono1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(112, 112, 112)
                         .addComponent(icono2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(33, 102, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(labelJ1)
                             .addComponent(jLabel1))
@@ -266,7 +402,7 @@ public class Timbiriche extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(76, 76, 76)
                         .addComponent(icono4, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 422, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 338, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(25, 25, 25))
             .addGroup(layout.createSequentialGroup()

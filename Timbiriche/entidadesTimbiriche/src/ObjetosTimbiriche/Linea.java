@@ -5,27 +5,27 @@
  */
 package ObjetosTimbiriche;
 
-import java.awt.Shape;
 import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.geom.Line2D;
+
 
 /**
  *
- * @author User 1
+ * @author Daniel Rojas
  */
 public class Linea extends Figura {
-    private Color color;
 
-    public void Dibujar() {
-        
+    public Linea(Color color, int x, int y) {
+        super(color,x,y);
     }
 
     @Override
-    public void setColor(Color color) {
-        this.color = color;
+    public void agregarLinea(Figura figura) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
+    @Override
+    public void eliminarLinea(Figura figura) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

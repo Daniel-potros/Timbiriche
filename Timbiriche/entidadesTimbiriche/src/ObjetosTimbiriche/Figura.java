@@ -6,18 +6,53 @@
 package ObjetosTimbiriche;
 
 import java.awt.Color;
-import java.awt.Graphics2D;
-import java.awt.Shape;
 
 /**
  *
- * @author User 1
+ * @author Daniel Rojas
  */
 public abstract class Figura  {
     private Color color;
+    int x,y;
     
-    public abstract void Dibujar();
+    public Figura (Color color, int x, int y) {
+        this.color = color;
+        this.x = x;
+        this.y = y;
+    }
     
-    public abstract void setColor(Color color);
+    public abstract void agregarLinea(Figura figura);
+    public abstract void eliminarLinea(Figura figura);
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Figura other = (Figura) obj;
+        if (this.x != other.x) {
+            return false;
+        }
+        if (this.y != other.y) {
+            return false;
+        }
+        return true;
+    }
+    
+    
+    public void setColor(Color color) {
+        this.color = color;
+    }
+    
+    
     
 }
