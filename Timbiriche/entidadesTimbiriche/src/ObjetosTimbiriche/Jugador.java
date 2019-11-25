@@ -7,7 +7,6 @@ package ObjetosTimbiriche;
 
 import java.awt.Color;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Objects;
 import javax.swing.ImageIcon;
 
@@ -20,11 +19,10 @@ public class Jugador {
     private ImageIcon Avatar;
     private Color color;
     private ArrayList<Figura> figuras;
-    private String contraseña;
     
-   public Jugador(String nombre, String contraseña) {
+   public Jugador(String nombre) {
        Nombre=nombre;
-       this.contraseña = contraseña;
+       
    }
 
     public String getNombre() {
@@ -58,6 +56,20 @@ public class Jugador {
     public void setFiguras(ArrayList<Figura> figuras) {
         this.figuras = figuras;
     }
+    
+    public void agregarFigura(Figura figura) {
+        figuras.add(figura);
+    }
+    
+    public void eliminarFigura(Figura figura) {
+        figuras.remove(figura);
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        return hash;
+    }
 
     @Override
     public boolean equals(Object obj) {
@@ -77,22 +89,17 @@ public class Jugador {
         if (!Objects.equals(this.Avatar, other.Avatar)) {
             return false;
         }
-        if (!Objects.equals(this.color, other.color)) {
-            return false;
-        }
         if (!Objects.equals(this.figuras, other.figuras)) {
             return false;
         }
         return true;
     }
 
-    public String getContraseña() {
-        return contraseña;
-    }
+   
+    
+  
 
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
-    }
+    
 
     
     

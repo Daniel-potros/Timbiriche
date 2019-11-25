@@ -5,22 +5,21 @@
  */
 package Pantallas;
 
-import ObjetosTimbiriche.ControlJugadores;
 import ObjetosTimbiriche.Jugador;
 
 /**
  *
- * @author hp1
+ * @author Daniel Rojas
  */
 public class DlgLogin extends javax.swing.JDialog {
-    ControlJugadores jugadores;
+
     /**
      * Creates new form DlgLogin
      */
     public DlgLogin(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        jugadores = new ControlJugadores();
+
     }
 
     /**
@@ -130,7 +129,7 @@ public class DlgLogin extends javax.swing.JDialog {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        jugadores.agregarJugador(new Jugador(tfieldNombre.getText(),tfieldContraseña.getText()));
+//        jugadores.agregarJugador(new Jugador(tfieldNombre.getText(),tfieldContraseña.getText()));
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
