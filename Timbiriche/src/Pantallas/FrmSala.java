@@ -5,23 +5,25 @@
  */
 package Pantallas;
 
-import ObjetosTimbiriche.ControlJugadores;
+import Juego.convertidorColores;
 import ObjetosTimbiriche.Jugador;
+import java.util.ArrayList;
 
 /**
  *
- * @author User 1
+ * @author Daniel Rojas
  */
 public class FrmSala extends javax.swing.JFrame {
     String nombre;
-    ControlJugadores jugadores;
+    ArrayList<Jugador> jugadores;
+    convertidorColores colores = new convertidorColores();
     /**
      * Creates new form FrmLobby
      */
     public FrmSala(String nombre) {
         initComponents();
         this.nombre = nombre;
-        jugadores = new ControlJugadores();
+        jugadores = new ArrayList<Jugador>();
     }
 
     /**
@@ -54,15 +56,15 @@ public class FrmSala extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<String>();
         jLabel9 = new javax.swing.JLabel();
-        jComboBox4 = new javax.swing.JComboBox<String>();
+        cbColor2 = new javax.swing.JComboBox<String>();
         jLabel10 = new javax.swing.JLabel();
         jRadioButton2 = new javax.swing.JRadioButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        jComboBox2 = new javax.swing.JComboBox<String>();
+        cbColor1 = new javax.swing.JComboBox<String>();
         jButton7 = new javax.swing.JButton();
-        jComboBox8 = new javax.swing.JComboBox<String>();
-        jComboBox6 = new javax.swing.JComboBox<String>();
+        cbColor4 = new javax.swing.JComboBox<String>();
+        cbColor3 = new javax.swing.JComboBox<String>();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
@@ -176,7 +178,12 @@ public class FrmSala extends javax.swing.JFrame {
 
         jLabel9.setText("\"Nombre\"");
 
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Rojo", "Azul", "Verde", "Amarillo" }));
+        cbColor2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Rojo", "Azul", "Verde", "Amarillo" }));
+        cbColor2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbColor2ActionPerformed(evt);
+            }
+        });
 
         jLabel10.setText("Jugador 4:");
 
@@ -191,7 +198,7 @@ public class FrmSala extends javax.swing.JFrame {
 
         jButton4.setText("Salir");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Rojo", "Azul", "Verde", "Amarillo" }));
+        cbColor1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Rojo", "Azul", "Verde", "Amarillo" }));
 
         jButton7.setText("Empezar Juego");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
@@ -200,9 +207,9 @@ public class FrmSala extends javax.swing.JFrame {
             }
         });
 
-        jComboBox8.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Rojo", "Azul", "Verde", "Amarillo" }));
+        cbColor4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Rojo", "Azul", "Verde", "Amarillo" }));
 
-        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Rojo", "Azul", "Amarillo", "Verde" }));
+        cbColor3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Rojo", "Azul", "Amarillo", "Verde" }));
 
         jLabel11.setText("\"Nombre\"");
 
@@ -276,10 +283,10 @@ public class FrmSala extends javax.swing.JFrame {
                             .addComponent(jLabel20, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(75, 75, 75)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cbColor1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbColor2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbColor3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbColor4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(54, 54, 54))))
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jButton4)
@@ -293,14 +300,14 @@ public class FrmSala extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(25, 25, 25)
-                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(cbColor1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(54, 54, 54)
-                                .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(cbColor2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(41, 41, 41)
                                 .addComponent(jLabel18))
@@ -321,7 +328,7 @@ public class FrmSala extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(47, 47, 47)
-                        .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(cbColor3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(45, 45, 45)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -340,7 +347,7 @@ public class FrmSala extends javax.swing.JFrame {
                                     .addComponent(jLabel10))
                                 .addGap(52, 52, 52))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jComboBox8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cbColor4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(50, 50, 50))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(56, 56, 56)
@@ -372,15 +379,29 @@ public class FrmSala extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
-        jugadores.agregarJugador(new Jugador("Daniel","123"));
-        jugadores.agregarJugador(new Jugador("Leo","123"));
-        jugadores.agregarJugador(new Jugador("Morquecho","123"));
-        jugadores.agregarJugador(new Jugador("Eydrel","123"));
+        Jugador jugador1 = new Jugador("Daniel");
+        Jugador jugador2 = new Jugador("Leo");
+//        Jugador jugador3 = new Jugador("Morquecho");
+//        Jugador jugador4 = new Jugador("Eydrel");
+        
+        jugador1.setColor(colores.getColor((String)cbColor1.getSelectedItem()));
+        jugador2.setColor(colores.getColor((String)cbColor2.getSelectedItem()));
+//        jugador3.setColor(colores.getColor((String)cbColor3.getSelectedItem()));
+//        jugador4.setColor(colores.getColor((String)cbColor4.getSelectedItem()));
+        
+        jugadores.add(jugador1);
+        jugadores.add(jugador2);
+//        jugadores.add(jugador3);
+//        jugadores.add(jugador4);
         
         Timbiriche timbiriche = new Timbiriche(jugadores);
         this.setVisible(false);
         timbiriche.setVisible(true);
     }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void cbColor2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbColor2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbColor2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -419,6 +440,10 @@ public class FrmSala extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cbColor1;
+    private javax.swing.JComboBox<String> cbColor2;
+    private javax.swing.JComboBox<String> cbColor3;
+    private javax.swing.JComboBox<String> cbColor4;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -426,13 +451,9 @@ public class FrmSala extends javax.swing.JFrame {
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JComboBox<String> jComboBox5;
-    private javax.swing.JComboBox<String> jComboBox6;
     private javax.swing.JComboBox<String> jComboBox7;
-    private javax.swing.JComboBox<String> jComboBox8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
