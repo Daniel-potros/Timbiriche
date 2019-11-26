@@ -5,27 +5,63 @@
  */
 package ObjetosTimbiriche;
 
-import java.awt.Shape;
 import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.geom.Line2D;
+import java.util.Objects;
+
 
 /**
  *
- * @author User 1
+ * @author Daniel Rojas
  */
 public class Linea extends Figura {
-    private Color color;
-
-    public void Dibujar() {
-        
+    private String posicion = "";
+    public Linea(Color color, int x, int y) {
+        super(color,x,y);
     }
 
     @Override
-    public void setColor(Color color) {
-        this.color = color;
+    public void agregarLinea(Figura figura) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
+    @Override
+    public void eliminarLinea(Figura figura) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public String getPosicion() {
+        return posicion;
+    }
+
+    public void setPosicion(String posicion) {
+        this.posicion = posicion;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Linea other = (Linea) obj;
+        if (!Objects.equals(this.posicion, other.posicion)) {
+            return false;
+        }
+        if (this.getX() != other.getX()) {
+            return false;
+        }
+        if (this.getY() != other.getY()) {
+            return false;
+        }
+        return true;
+    }
     
 }

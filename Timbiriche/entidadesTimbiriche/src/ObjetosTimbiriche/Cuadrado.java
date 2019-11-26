@@ -5,26 +5,69 @@
  */
 package ObjetosTimbiriche;
 
-import java.awt.Shape;
 import java.awt.Color;
-import java.awt.Graphics2D;
+import java.util.ArrayList;
+import java.util.Objects;
 
 /**
  *
- * @author User 1
+ * @author Daniel Rojas
  */
 public class Cuadrado extends Figura{
-private Color color;
+    private ArrayList<Figura> lineas = new ArrayList<Figura>();
     
     
-    @Override
-    public void setColor(Color color) {
-        this.color = color;
+    public Cuadrado(Color color, int x, int y) {
+        super(color,x,y);
     }
 
     @Override
-    public void Dibujar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void agregarLinea(Figura figura) {
+        if (!lineas.contains(figura) && lineas.size()<4) {
+            lineas.add(figura);
+        }
+    }
+
+    @Override
+    public void eliminarLinea(Figura figura) {
+        if (lineas.contains(figura)) {
+            lineas.remove(figura);
+        }
+    }
+
+    public ArrayList<Figura> getLineas() {
+        return lineas;
+    }
+
+    public void setLineas(ArrayList<Figura> lineas) {
+        this.lineas = lineas;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Cuadrado other = (Cuadrado) obj;
+        if (!Objects.equals(this.lineas, other.lineas)) {
+            return false;
+        }
+        if (this.getX() != other.getX()) {
+            return false;
+        }
+        if (this.getY() != other.getY()) {
+            return false;
+        }
+        return true;
     }
 
 
