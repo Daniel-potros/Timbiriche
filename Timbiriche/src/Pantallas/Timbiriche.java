@@ -6,6 +6,7 @@
 package Pantallas;
 
 
+import Juego.botonCirculo;
 import Juego.botonLinea;
 import Juego.convertidorColores;
 import ObjetosTimbiriche.Cuadrado;
@@ -19,6 +20,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 /**
@@ -29,8 +31,11 @@ public class Timbiriche extends javax.swing.JFrame {
 
     ArrayList<Jugador> jugadores;
     private JButton botonesHorizontales[][];
+    private JButton botonesHorizontales1[][];
     private JButton botonesVerticales[][];
+    private JButton botonesVerticales1[][];
     private JButton cuadros[][];
+
     private ArrayList<Cuadrado> cuadrados = new ArrayList<>();
     private Tablero tablero;
     int tamaño,turno = 1;
@@ -44,6 +49,7 @@ public class Timbiriche extends javax.swing.JFrame {
     public Timbiriche(ArrayList<Jugador> jugadores) {
         initComponents();
         this.jugadores = jugadores;
+        
         
            switch (jugadores.size()) {
             case 2:
@@ -117,8 +123,11 @@ public class Timbiriche extends javax.swing.JFrame {
      */
     public void crearTablero() {
         botonesHorizontales = new botonLinea[tamaño][tamaño + 1];
+        botonesHorizontales1 = new botonCirculo[tamaño ][tamaño + 1];
         botonesVerticales = new botonLinea[tamaño + 1][tamaño];
+        botonesVerticales1 = new botonCirculo[tamaño + 1][tamaño];
         cuadros = new JButton[tamaño][tamaño];
+        
 
         for (int y = 0; y < tamaño; y++) {
             for (int x = 0; x < tamaño + 1; x++) {
@@ -126,20 +135,30 @@ public class Timbiriche extends javax.swing.JFrame {
                 boton.setVisible(true);
                 boton.setBackground(Color.gray);
                 boton.addActionListener(new ButtonListener());
+                
+                botonCirculo boton0 = new botonCirculo();
+                boton0.setVisible(true);
+                boton0.setBackground(Color.BLACK);
 
 //                 Botones horizontales
                 switch (tamaño) {
                     case 10:
                         boton.setSize(65, 26);
                         boton.setLocation((95 * y) + 26, (94 * x) );
+                        boton0.setSize(28,25);
+                        boton0.setLocation((95 * y)  , (94 * x) );
                         break;
                     case 20:
                         boton.setSize(30, 10);
                         boton.setLocation((47 * y) + 14 + (y / 2), (47 * x) + (x / 2));
+                        boton0.setSize(11,15);
+                        boton0.setLocation((47 * y) + (y / 2), (47 * x) + (x / 2));
                         break;
                     case 40:
                         boton.setSize(20, 12);
                         boton.setLocation((24 * y) + 9, (24 * x));
+                        boton0.setSize(6,5);
+                        boton0.setLocation((24 * y) + 4 , (24 * x) + 4 );
                         break;
                     default:
                         break;
@@ -147,9 +166,18 @@ public class Timbiriche extends javax.swing.JFrame {
 
                 boton.setx(y);
                 boton.sety(x);
+                boton0.setx(y);
+                boton0.sety(x);
                 boton.setPosicion("Horizontal");
+                boton0.setPosicion("Horizontal");
                 botonesHorizontales[y][x] = boton;
+                botonesHorizontales1[y][x] = boton0;
                 labelTablero.add(boton);
+                labelTablero.add(boton0);
+                
+              
+               
+                 
             }
         }
         
@@ -159,20 +187,31 @@ public class Timbiriche extends javax.swing.JFrame {
                 boton2.setVisible(true);
                 boton2.setBackground(Color.GRAY);
                 boton2.addActionListener(new ButtonListener());
+                
+                botonCirculo boton1 = new botonCirculo();
+                boton1.setVisible(true);
+                boton1.setBackground(Color.BLACK);
+                
 
 //                botones verticales
                 switch (tamaño) {
                     case 10:
                         boton2.setSize(26, 65);
                         boton2.setLocation((95 * y), (94 * x) + 26);
+                        boton1.setSize(28,25);
+                        boton1.setLocation((95 * y)  , (94 * x) );
                         break;
                     case 20:
                         boton2.setSize(10, 30);
                         boton2.setLocation((47 * y) + (y / 2), (47 * x) + 14 + (x / 2));
+                        boton1.setSize(11,15);
+                        boton1.setLocation((47 * y) + (y / 2), (47 * x)  + (x / 2));
                         break;
                     case 40:
                         boton2.setSize(12, 20);
                         boton2.setLocation((24 * y), (24 * x) + 9);
+                        boton1.setSize(6,5);
+                        boton1.setLocation((24 * y) + 4 , (24 * x) + 4);
                         break;
                     default:
                         break;
@@ -180,9 +219,14 @@ public class Timbiriche extends javax.swing.JFrame {
 
                 boton2.setx(y);
                 boton2.sety(x);
+                boton1.setx(y);
+                boton1.sety(x);
                 boton2.setPosicion("Vertical");
+                boton1.setPosicion("Vertical");
                 botonesVerticales[y][x] = boton2;
+                botonesVerticales1[y][x] = boton1;
                 labelTablero.add(boton2);
+                labelTablero.add(boton1);
             }
         }
         
@@ -308,7 +352,7 @@ public class Timbiriche extends javax.swing.JFrame {
             }
         }
     }
-    
+ 
     /**
      * Método para cambiar el color y representar los cuadros formados por el jugador
      * y actualizar su puntaje
@@ -343,6 +387,8 @@ public class Timbiriche extends javax.swing.JFrame {
         
         tablero.obtenerPuntuacion(jugador).setJugador(jugador2);
     }
+    
+
 
     /**
      * This method is called from within the constructor to initialize the form.

@@ -7,7 +7,9 @@ package Pantallas;
 
 import Juego.convertidorColores;
 import ObjetosTimbiriche.Jugador;
+import java.awt.Image;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -384,8 +386,24 @@ public class FrmSala extends javax.swing.JFrame {
         Jugador jugador3 = new Jugador("Morquecho");
         Jugador jugador4 = new Jugador("Eydrel");
         
+        
+        jugador1.setAvatar(new ImageIcon(("src\\Avatares\\Avatar1.jpg")));
+        ImageIcon icono1 = new ImageIcon(jugador1.getAvatar().getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT));
+        
+        jugador2.setAvatar(new ImageIcon(("src\\Avatares\\Avatar2.jpg")));
+        ImageIcon icono2 = new ImageIcon(jugador2.getAvatar().getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT));
+        
+        jugador3.setAvatar(new ImageIcon(("src\\Avatares\\Avatar3.jpg")));
+        ImageIcon icono3 = new ImageIcon(jugador3.getAvatar().getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT));
+        
+         jugador4.setAvatar(new ImageIcon(("src\\Avatares\\Avatar4.jpg")));
+         ImageIcon icono4 = new ImageIcon(jugador4.getAvatar().getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT));
+         
+        
         jugador1.setColor(colores.getColor((String)cbColor1.getSelectedItem()));
         jugador2.setColor(colores.getColor((String)cbColor2.getSelectedItem()));
+        
+        
 //        jugador3.setColor(colores.getColor((String)cbColor3.getSelectedItem()));
 //        jugador4.setColor(colores.getColor((String)cbColor4.getSelectedItem()));
         
@@ -393,6 +411,12 @@ public class FrmSala extends javax.swing.JFrame {
         jugadores.add(jugador2);
 //        jugadores.add(jugador3);
 //        jugadores.add(jugador4);
+
+        jugador1.setAvatar(icono1);
+        jugador2.setAvatar(icono2);
+//        jugador3.setAvatar(icono3);
+//        jugador4.setAvatar(icono4);
+        
         
         Timbiriche timbiriche = new Timbiriche(jugadores);
         this.setVisible(false);
