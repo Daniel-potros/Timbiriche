@@ -6,13 +6,14 @@
 package Pantallas;
 
 import ObjetosTimbiriche.Jugador;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Daniel Rojas
  */
 public class DlgLogin extends javax.swing.JDialog {
-
+    private Jugador jugador;
     /**
      * Creates new form DlgLogin
      */
@@ -37,7 +38,7 @@ public class DlgLogin extends javax.swing.JDialog {
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        registrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -64,10 +65,10 @@ public class DlgLogin extends javax.swing.JDialog {
 
         jButton2.setText("Cancelar");
 
-        jButton3.setText("Registrarse");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        registrar.setText("Registrarse");
+        registrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                registrarActionPerformed(evt);
             }
         });
 
@@ -83,7 +84,7 @@ public class DlgLogin extends javax.swing.JDialog {
                         .addGap(48, 48, 48)
                         .addComponent(jButton2)
                         .addGap(36, 36, 36)
-                        .addComponent(jButton3))
+                        .addComponent(registrar))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
@@ -111,7 +112,7 @@ public class DlgLogin extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(registrar))
                 .addGap(40, 40, 40))
         );
 
@@ -127,10 +128,20 @@ public class DlgLogin extends javax.swing.JDialog {
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarActionPerformed
         // TODO add your handling code here:
-//        jugadores.agregarJugador(new Jugador(tfieldNombre.getText(),tfieldContraseña.getText()));
-    }//GEN-LAST:event_jButton3ActionPerformed
+        registrar.setSelected(true);
+        
+        if(tfieldNombre.getText()!= null && (tfieldNombre.equals(""))){
+            JOptionPane.showMessageDialog(null,"Favor de llenar el campo de nombre");
+            registrar.setBackground(null);
+            registrar.setSelected(false);
+        }else {
+            jugador = new Jugador(tfieldNombre.getText());
+            JOptionPane.showMessageDialog(null,"Jugador a nombre de " + tfieldNombre.getText() + " fue registrado");
+//            jugador.getNombre(tfieldNombre.getText())
+        }
+    }//GEN-LAST:event_registrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -177,9 +188,9 @@ public class DlgLogin extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton registrar;
     private javax.swing.JTextField tfieldContraseña;
     private javax.swing.JTextField tfieldNombre;
     // End of variables declaration//GEN-END:variables

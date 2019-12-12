@@ -38,11 +38,11 @@ public class FrmSala extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel5 = new javax.swing.JLabel();
-        jComboBox3 = new javax.swing.JComboBox<String>();
+        jComboBox3 = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
-        jComboBox5 = new javax.swing.JComboBox<String>();
+        jComboBox5 = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
-        jComboBox7 = new javax.swing.JComboBox<String>();
+        jComboBox7 = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
@@ -56,17 +56,17 @@ public class FrmSala extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jRadioButton1 = new javax.swing.JRadioButton();
         jLabel4 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<String>();
+        jComboBox1 = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
-        cbColor2 = new javax.swing.JComboBox<String>();
+        cbColor2 = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
         jRadioButton2 = new javax.swing.JRadioButton();
-        jButton3 = new javax.swing.JButton();
+        cambiarAvatar = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        cbColor1 = new javax.swing.JComboBox<String>();
+        cbColor1 = new javax.swing.JComboBox<>();
         jButton7 = new javax.swing.JButton();
-        cbColor4 = new javax.swing.JComboBox<String>();
-        cbColor3 = new javax.swing.JComboBox<String>();
+        cbColor4 = new javax.swing.JComboBox<>();
+        cbColor3 = new javax.swing.JComboBox<>();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
@@ -81,15 +81,15 @@ public class FrmSala extends javax.swing.JFrame {
 
         jLabel5.setText("\"Nombre\"");
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Rojo", "Azul", "Verde", "Amarillo" }));
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Rojo", "Azul", "Verde", "Amarillo" }));
 
         jLabel6.setText("\"Nombre\"");
 
-        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Rojo", "Azul", "Amarillo", "Verde" }));
+        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Rojo", "Azul", "Amarillo", "Verde" }));
 
         jLabel7.setText("\"Nombre\"");
 
-        jComboBox7.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Rojo", "Azul", "Verde", "Amarillo" }));
+        jComboBox7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Rojo", "Azul", "Verde", "Amarillo" }));
 
         jLabel8.setText("\"Nombre\"");
 
@@ -174,13 +174,13 @@ public class FrmSala extends javax.swing.JFrame {
 
         jLabel4.setText("Jugador 4:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Rojo", "Azul", "Verde", "Amarillo" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Rojo", "Azul", "Verde", "Amarillo" }));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel9.setText("\"Nombre\"");
 
-        cbColor2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Rojo", "Azul", "Verde", "Amarillo" }));
+        cbColor2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Rojo", "Azul", "Verde", "Amarillo" }));
         cbColor2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbColor2ActionPerformed(evt);
@@ -191,16 +191,16 @@ public class FrmSala extends javax.swing.JFrame {
 
         jRadioButton2.setText("Listo");
 
-        jButton3.setText("Cambiar avatar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        cambiarAvatar.setText("Cambiar avatar");
+        cambiarAvatar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                cambiarAvatarActionPerformed(evt);
             }
         });
 
         jButton4.setText("Salir");
 
-        cbColor1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Rojo", "Azul", "Verde", "Amarillo" }));
+        cbColor1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Rojo", "Azul", "Verde", "Amarillo" }));
 
         jButton7.setText("Empezar Juego");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
@@ -209,9 +209,9 @@ public class FrmSala extends javax.swing.JFrame {
             }
         });
 
-        cbColor4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Rojo", "Azul", "Verde", "Amarillo" }));
+        cbColor4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Rojo", "Azul", "Verde", "Amarillo" }));
 
-        cbColor3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Rojo", "Azul", "Amarillo", "Verde" }));
+        cbColor3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Rojo", "Azul", "Amarillo", "Verde" }));
 
         jLabel11.setText("\"Nombre\"");
 
@@ -241,7 +241,7 @@ public class FrmSala extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton3)
+                        .addComponent(cambiarAvatar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jRadioButton2)
                         .addGap(30, 30, 30)
@@ -359,7 +359,7 @@ public class FrmSala extends javax.swing.JFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jButton7)
                         .addComponent(jRadioButton2))
-                    .addComponent(jButton3))
+                    .addComponent(cambiarAvatar))
                 .addGap(31, 31, 31)
                 .addComponent(jButton4))
         );
@@ -375,9 +375,10 @@ public class FrmSala extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton6ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void cambiarAvatarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cambiarAvatarActionPerformed
+        Avatares avatar = new Avatares(this,true);
+        avatar.setVisible(true);
+    }//GEN-LAST:event_cambiarAvatarActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
@@ -464,13 +465,13 @@ public class FrmSala extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cambiarAvatar;
     private javax.swing.JComboBox<String> cbColor1;
     private javax.swing.JComboBox<String> cbColor2;
     private javax.swing.JComboBox<String> cbColor3;
     private javax.swing.JComboBox<String> cbColor4;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;

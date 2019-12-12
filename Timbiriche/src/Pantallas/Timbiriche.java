@@ -37,10 +37,11 @@ public class Timbiriche extends javax.swing.JFrame {
     private JButton cuadros[][];
 
     private ArrayList<Cuadrado> cuadrados = new ArrayList<>();
+    private ArrayList<Linea> linea = new ArrayList<>();
     private Tablero tablero;
     int tamaño,turno = 1;
     convertidorColores colores = new convertidorColores();
-
+ 
     /**
      * Constructor que acomoda los datos de los jugadores y llama al método
      * crearTablero
@@ -57,6 +58,7 @@ public class Timbiriche extends javax.swing.JFrame {
                 labelJ2.setText(jugadores.get(1).getNombre());
                 icono1.setIcon(jugadores.get(0).getAvatar());
                 icono2.setIcon(jugadores.get(1).getAvatar());
+                
                 tamaño = 10;
                 tablero = new Tablero(2);
                 try {
@@ -272,7 +274,7 @@ public class Timbiriche extends javax.swing.JFrame {
         public void actionPerformed(ActionEvent evento) {
             botonLinea botonActivado = (botonLinea) evento.getSource();
             botonActivado.setEnabled(true);
-            botonActivado.setBackground(Color.RED);
+            botonActivado.setBackground(jugadores.get(0).getColor());
             Linea linea = new Linea(Color.RED,botonActivado.getx(),botonActivado.gety());
             
             if (botonActivado.getPosicion().equalsIgnoreCase("horizontal")) {
@@ -372,6 +374,20 @@ public class Timbiriche extends javax.swing.JFrame {
         labelPuntos1.setText(String.valueOf(puntaje.getPuntaje()));
         labelTablero.repaint();
     }
+    public void llenarLinea (int x, int y, Color color){
+        botonesHorizontales[x][y].setBackground(color);
+        botonesHorizontales[x][y].setVisible(true);
+        botonesHorizontales[x][y+1].setBackground(color);
+        botonesHorizontales[x][y+1].setVisible(true);
+        botonesVerticales[x][y].setBackground(color);
+        botonesVerticales[x][y].setVisible(true);
+        botonesVerticales[x+1][y].setBackground(color);
+        botonesVerticales[x+1][y].setVisible(true);
+        String inicial = "" + jugadores.get(0).getNombre().charAt(0);
+        labelTablero.repaint();
+        
+    }
+    
     
     public void cambiarColor(Color color,Jugador jugador) {
         Jugador jugador2 = jugador;
@@ -386,6 +402,20 @@ public class Timbiriche extends javax.swing.JFrame {
         }
         
         tablero.obtenerPuntuacion(jugador).setJugador(jugador2);
+    }
+    public void cambiarColorLineas(Color color, Jugador jugador){
+       Jugador jugador1 = jugador;
+       botonLinea bo = new botonLinea();
+       
+       for (Cuadrado cuadrado : cuadrados){
+           if (jugador1.getFiguras().contains(cuadrado)){
+               cuadrado.setColor(jugador1.getColor());
+               llenarLinea(cuadrado.getX(), cuadrado.getY(), jugadores.get(0).getColor());
+           }
+       }
+     
+       
+       
     }
     
 
@@ -621,6 +651,7 @@ public class Timbiriche extends javax.swing.JFrame {
     private void color1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_color1ActionPerformed
         // TODO add your handling code here:
         cambiarColor(colores.getColor((String)color1.getSelectedItem()), jugadores.get(0));
+        cambiarColorLineas(colores.getColor((String)color1.getSelectedItem()), jugadores.get(0));
     }//GEN-LAST:event_color1ActionPerformed
 
     /**
